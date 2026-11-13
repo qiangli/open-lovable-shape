@@ -28,3 +28,9 @@ test('Firecrawl is opt-in', async () => {
     assert.match(source, /requireFirecrawlEnabled\(\)/, route);
   }
 });
+
+test('fonts are bundled locally', async () => {
+  const layout = await read('app/layout.tsx');
+  assert.doesNotMatch(layout, /next\/font\/google/);
+  assert.match(layout, /next\/font\/local/);
+});
