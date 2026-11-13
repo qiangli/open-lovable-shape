@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { requireFirecrawlEnabled } from '@/lib/firecrawl-enabled';
 
 export async function POST(req: NextRequest) {
   try {
+    requireFirecrawlEnabled();
     const { query } = await req.json();
     
     if (!query) {

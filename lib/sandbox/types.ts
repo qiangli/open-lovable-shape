@@ -7,7 +7,7 @@ export interface SandboxFile {
 export interface SandboxInfo {
   sandboxId: string;
   url: string;
-  provider: 'e2b' | 'vercel';
+  provider: 'bashy-oci';
   createdAt: Date;
 }
 
@@ -19,16 +19,9 @@ export interface CommandResult {
 }
 
 export interface SandboxProviderConfig {
-  e2b?: {
-    apiKey: string;
-    timeoutMs?: number;
-    template?: string;
-  };
-  vercel?: {
-    teamId?: string;
-    projectId?: string;
-    token?: string;
-    authMethod?: 'oidc' | 'pat';
+  bashyOci?: {
+    bashyBin?: string;
+    image?: string;
   };
 }
 

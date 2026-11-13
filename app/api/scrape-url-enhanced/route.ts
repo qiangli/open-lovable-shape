@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { requireFirecrawlEnabled } from '@/lib/firecrawl-enabled';
 
 // Function to sanitize smart quotes and other problematic characters
 function sanitizeQuotes(text: string): string {
@@ -18,6 +19,7 @@ function sanitizeQuotes(text: string): string {
 
 export async function POST(request: NextRequest) {
   try {
+    requireFirecrawlEnabled();
     const { url } = await request.json();
     
     if (!url) {

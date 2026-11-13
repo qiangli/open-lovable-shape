@@ -4,7 +4,7 @@ import { ComponentProps, useEffect, useState } from "react";
 import { encryptText } from "@/components/app/(home)/sections/hero/Title/Title";
 import { cn } from "@/utils/cn";
 
-export default function HeroScrapingTag({
+export default function HeroScrapeLabel({
   active,
   label,
   ...attrs

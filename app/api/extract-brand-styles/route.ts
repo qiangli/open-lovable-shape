@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { requireFirecrawlEnabled } from '@/lib/firecrawl-enabled';
 
 export async function POST(request: NextRequest) {
   try {
+    requireFirecrawlEnabled();
     const body = await request.json();
     const url = body.url;
     const prompt = body.prompt;
