@@ -10,6 +10,8 @@ Linux environment.
   gateway is enabled. Standard W3C-propagating OTel request tracing exports
   only when the owner sets `OTEL_EXPORTER_OTLP_ENDPOINT` (or the traces-specific
   form) to a collector they operate.
+- Next.js CLI telemetry is disabled in the development, build, and start
+  lifecycle scripts.
 
 ## Run
 

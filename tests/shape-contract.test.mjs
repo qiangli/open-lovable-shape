@@ -45,3 +45,10 @@ test('owner OTLP tracing is opt-in and has no default collector', async () => {
   assert.match(telemetry, /OTLPTraceExporter/);
   assert.doesNotMatch(telemetry, /https?:\/\//);
 });
+
+test('Next CLI telemetry is disabled for every lifecycle command', async () => {
+  const pkg = JSON.parse(await read('package.json'));
+  for (const command of ['dev', 'build', 'start']) {
+    assert.match(pkg.scripts[command], /^NEXT_TELEMETRY_DISABLED=1 /, command);
+  }
+});
