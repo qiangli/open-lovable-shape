@@ -35,3 +35,13 @@ test('fonts are bundled locally', async () => {
   assert.doesNotMatch(layout, /next\/font\/google/);
   assert.match(layout, /next\/font\/local/);
 });
+
+test('owner OTLP tracing is opt-in and has no default collector', async () => {
+  const hook = await read('instrumentation.ts');
+  const telemetry = await read('lib/telemetry/owner-otel.ts');
+  assert.match(hook, /OTEL_EXPORTER_OTLP_ENDPOINT/);
+  assert.match(hook, /OTEL_EXPORTER_OTLP_TRACES_ENDPOINT/);
+  assert.match(telemetry, /getNodeAutoInstrumentations/);
+  assert.match(telemetry, /OTLPTraceExporter/);
+  assert.doesNotMatch(telemetry, /https?:\/\//);
+});

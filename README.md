@@ -6,8 +6,10 @@ Linux environment.
 - Generated sites run in local Podman containers through `bashy oci`.
 - LLM requests use the owner's OpenAI-compatible base URL. A key is optional.
 - Firecrawl site cloning is disabled unless `ENABLE_FIRECRAWL=true` is set.
-- No telemetry, analytics, support widget, update check, or vendor gateway is
-  enabled by the application.
+- No vendor telemetry, analytics, support widget, update check, or vendor
+  gateway is enabled. Standard W3C-propagating OTel request tracing exports
+  only when the owner sets `OTEL_EXPORTER_OTLP_ENDPOINT` (or the traces-specific
+  form) to a collector they operate.
 
 ## Run
 
