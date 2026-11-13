@@ -56,8 +56,7 @@ export class BashyOciProvider extends SandboxProvider {
     const created = await this.oci([
       'run', '--detach', '--name', this.containerName,
       '--publish', '127.0.0.1::5173',
-      '--workdir', WORKDIR,
-      image, 'sh', '-lc', 'trap : TERM INT; sleep infinity & wait',
+      image, 'sh', '-lc', `mkdir -p ${WORKDIR}; trap : TERM INT; sleep infinity & wait`,
     ]);
     if (!created.success) throw new Error(`Could not start local sandbox: ${created.stderr}`);
     this.alive = true;

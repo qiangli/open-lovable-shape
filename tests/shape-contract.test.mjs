@@ -10,6 +10,7 @@ test('local bashy OCI is the only sandbox provider', async () => {
   assert.match(factory, /SANDBOX_PROVIDER \|\| 'bashy-oci'/);
   assert.match(provider, /\['oci', \.\.\.args\]/);
   assert.match(provider, /'127\.0\.0\.1::5173'/);
+  assert.match(provider, /mkdir -p \$\{WORKDIR\}/);
   assert.doesNotMatch(factory, /E2BProvider|VercelProvider/);
 });
 
